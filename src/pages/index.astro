@@ -33,6 +33,13 @@ const faqs = [
 <Layout title="TheNoHoHandyman | Handyman Services in Los Angeles" description="Father & sons handyman team serving North Hollywood, Encino, Sherman Oaks and Burbank. Skilled repairs, fair pricing, no middlemen. Free estimates.">
   <Header />
 
+  <div class="thanks-banner" id="thanks-banner">
+    <div class="container">
+      <p>Thanks! We'll get back to you within 5 hours.</p>
+      <button id="close-thanks" aria-label="Dismiss">&times;</button>
+    </div>
+  </div>
+
   <!-- Hero -->
   <section class="hero" style="background-image: url('/images/hero.jpg');">
     <div class="hero-overlay"></div>
@@ -169,7 +176,9 @@ const faqs = [
         </div>
       </div>
       <div class="contact-form-wrap">
-        <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <form class="contact-form" action="https://formspree.io/f/xdeozzjw" method="POST">
+          <input type="hidden" name="_subject" value="New quote request from thenohohandyman.com" />
+          <input type="hidden" name="_next" value="https://thenohohandyman.com/?thanks=1" />
           <h3>Request a Free Quote</h3>
           <div class="form-group">
             <label for="phone">Phone</label>
@@ -234,6 +243,17 @@ const faqs = [
   <CTAStrip />
   <Footer />
 </Layout>
+
+<script>
+  const banner = document.getElementById('thanks-banner');
+  const closeBtn = document.getElementById('close-thanks');
+  if (window.location.search.includes('thanks=1')) {
+    banner?.classList.add('visible');
+  }
+  closeBtn?.addEventListener('click', () => {
+    banner?.classList.remove('visible');
+  });
+</script>
 
 <style>
   /* Hero */
@@ -776,6 +796,43 @@ const faqs = [
     font-size: 0.9375rem;
     color: var(--color-text-muted);
     line-height: 1.7;
+  }
+
+  /* Thank You Banner */
+  .thanks-banner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 101;
+    background: #059669;
+    color: var(--color-white);
+    padding: 1rem 0;
+    transform: translateY(-100%);
+    transition: transform 0.4s ease;
+  }
+  .thanks-banner.visible {
+    transform: translateY(0);
+  }
+  .thanks-banner .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .thanks-banner p {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.9375rem;
+  }
+  .thanks-banner button {
+    font-size: 1.5rem;
+    line-height: 1;
+    color: var(--color-white);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.25rem;
   }
 
   /* Responsive */
