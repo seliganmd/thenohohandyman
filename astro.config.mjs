@@ -1,5 +1,6 @@
-// @ts-check
 import { defineConfig } from 'astro/config';
 
-// https://astro.build/config
-export default defineConfig({});
+export default defineConfig({
+  site: 'https://thenohohandyman.com',
+  // Remove any subpath 'base' parameter if previously configured for github.io
+});
