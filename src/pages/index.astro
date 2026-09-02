@@ -1,42 +1,790 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import CTAStrip from '../components/CTAStrip.astro';
+
+const services = [
+  { title: 'Exterior Works', slug: 'exterior-works', image: '/images/service-exterior.jpg' },
+  { title: 'Interior Works', slug: 'interior-works', image: '/images/service-interior.jpg' },
+  { title: 'Carpentry', slug: 'carpentry', image: '/images/service-carpentry.jpg' },
+];
+
+const neighborhoods = [
+  'North Hollywood', 'Encino', 'Sherman Oaks', 'Burbank',
+  'Studio City', 'Van Nuys', 'Woodland Hills', 'Calabasas',
+  'Mission Hills', 'Granada Hills', 'Porter Ranch', 'Chatsworth',
+];
+
+const processSteps = [
+  { step: '1', title: 'Book an appointment', desc: 'Call, text, or fill out the form. We respond within 5 hours.' },
+  { step: '2', title: 'Receive an estimate', desc: 'Free, no-pressure quote with upfront pricing.' },
+  { step: '3', title: 'The project can start', desc: 'We show up on time and get it done right.' },
+];
+
+const faqs = [
+  { q: 'Do you offer warranties on your work?', a: 'Yes, we stand by the quality of our work. We provide warranties to ensure your satisfaction and address any issues that may arise after the completion of the service.' },
+  { q: 'Can I schedule services for weekends?', a: 'Absolutely. We are available 7 days a week, including weekends and evenings. We work around your schedule.' },
+  { q: 'Are you licensed and insured?', a: 'Yes. We are fully licensed and insured for your peace of mind. Our team carries all necessary coverage for residential work.' },
+  { q: 'What areas do you serve?', a: 'We serve North Hollywood, Encino, Sherman Oaks, Burbank, Studio City, Van Nuys, Woodland Hills, Calabasas, and surrounding Los Angeles communities.' },
+];
 ---
 
-<Layout title="TheNoHoHandyman | Handyman Services in Los Angeles">
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "HomeAndConstructionBusiness",
-      "name": "TheNoHoHandyman",
-      "telephone": "(323) 802-3454",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "22124 Ventura Blvd #217",
-        "addressLocality": "Woodland Hills",
-        "addressRegion": "CA",
-        "postalCode": "91364",
-        "addressCountry": "US"
-      }
-    }
-  </script>
+<Layout title="TheNoHoHandyman | Handyman Services in Los Angeles" description="Father & sons handyman team serving North Hollywood, Encino, Sherman Oaks and Burbank. Skilled repairs, fair pricing, no middlemen. Free estimates.">
+  <Header />
 
-  <header style="padding: 2rem 0; border-bottom: 1px solid #e5e7eb;">
-    <h1 style="font-size: 2rem; font-weight: bold;">TheNoHoHandyman</h1>
-    <p>Father & Sons Handyman Service for Los Angeles Homeowners</p>
-  </header>
-
-  <main style="padding: 2rem 0;">
-    <h2 style="font-size: 1.5rem; font-weight: 600;">Quality Handyman Repairs</h2>
-    <p>Direct service, fair pricing, no call centers or middleman fees.</p>
-    
-    <div style="background: #f4f4f5; padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0;">
-      <h3 style="font-size: 1.25rem; font-weight: 600;">Contact & Location</h3>
-      <p><strong>Phone:</strong> <a href="tel:3238023454">(323) 802-3454</a></p>
-      <p><strong>Address:</strong> 22124 Ventura Blvd #217, Woodland Hills, CA 91364</p>
+  <!-- Hero -->
+  <section class="hero" style="background-image: url('/images/hero.jpg');">
+    <div class="hero-overlay"></div>
+    <div class="container hero-content">
+      <h1>Father & Sons Handyman Service for Los Angeles Homeowners</h1>
+      <ul class="trust-bullets">
+        <li>Professional and detail-driven.</li>
+        <li>No call centers. No franchise fees.</li>
+        <li>Just skilled repairs and fair, upfront pricing, handled directly by us.</li>
+      </ul>
+      <a href="tel:3238023454" class="hero-phone">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        (323) 802-3454
+      </a>
     </div>
-  </main>
+  </section>
 
-  <footer style="margin-top: 2rem; border-top: 1px solid #e5e7eb; padding-top: 1rem; color: #6b7280;">
-    <p>&copy; {new Date().getFullYear()} TheNoHoHandyman. All rights reserved.</p>
-  </footer>
+  <!-- Trust Band -->
+  <section class="trust-band">
+    <div class="container">
+      <h2>Team You Can Trust in Your Home</h2>
+      <div class="trust-grid">
+        <div class="trust-item">
+          <div class="trust-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>Licensed & Insured</h3>
+          <p>Fully covered for every job.</p>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h3>Always On Time</h3>
+          <p>We respect your schedule.</p>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" x2="8" y1="13" y2="13"/><line x1="16" x2="8" y1="17" y2="17"/></svg>
+          </div>
+          <h3>Detail-Focused</h3>
+          <p>We finish what we start.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Family Section -->
+  <section class="family-section">
+    <div class="container family-inner">
+      <div class="family-text">
+        <h2>About Our Family Team</h2>
+        <p>We're a NoHo-based father & son handyman team: David, Manoug, and Aron. With years of experience and a focus on clear, detailed work, we combine skilled craftsmanship with modern solutions. Our philosophy is simple: do it right the first time, so the results last.</p>
+        <div class="family-stats">
+          <div class="stat"><strong>7</strong><span>DAY availability</span></div>
+          <div class="stat"><strong>5</strong><span>HOURS response time</span></div>
+        </div>
+      </div>
+      <div class="family-image">
+        <img src="/images/team.png" alt="TheNoHoHandyman father and sons team" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Preview -->
+  <section class="services-preview">
+    <div class="container">
+      <div class="section-header">
+        <h2>Services We Offer</h2>
+        <p>Have a unique or non-standard project? We love those too — just let us know!</p>
+      </div>
+      <div class="service-grid">
+        {services.map(s => (
+          <a href={`/services/${s.slug}`} class="service-card">
+            <div class="service-card-image">
+              <img src={s.image} alt={s.title} loading="lazy" />
+            </div>
+            <div class="service-card-caption">
+              <h3>{s.title}</h3>
+            </div>
+          </a>
+        ))}
+      </div>
+      <div class="achievement-strip">
+        <div class="achievement"><strong>25+</strong><span>Years of Activity</span></div>
+        <div class="achievement"><strong>30k+</strong><span>Projects Done</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Neighborhoods -->
+  <section class="neighborhoods">
+    <div class="container">
+      <h2>Our Service Neighborhoods</h2>
+      <p>We cover the Valley, Westside, and Foothills — from Mission Hills to Encino. If you're on this list, we're local to you.</p>
+      <div class="neighborhood-grid">
+        {neighborhoods.map(n => <span class="neighborhood-tag">{n}</span>)}
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section class="process-section">
+    <div class="container">
+      <h2>Our Work Process</h2>
+      <div class="process-grid">
+        {processSteps.map(p => (
+          <div class="process-card">
+            <div class="process-step">{p.step}</div>
+            <h3>{p.title}</h3>
+            <p>{p.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact-section" id="contact">
+    <div class="container contact-inner">
+      <div class="contact-info">
+        <h2>Get in Touch</h2>
+        <p class="contact-subtitle">Call, Text, or FaceTime — we're here to help.</p>
+        <a href="tel:3238023454" class="contact-phone">(323) 802-3454</a>
+        <div class="contact-actions">
+          <a href="tel:3238023454" class="contact-btn primary">Call Now</a>
+          <a href="sms:3238023454" class="contact-btn">Send Text</a>
+        </div>
+        <div class="instagram-link">
+          <a href="https://www.instagram.com/thenohohandyman" target="_blank" rel="noopener noreferrer">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+            Our gallery and reviews on Instagram
+          </a>
+        </div>
+      </div>
+      <div class="contact-form-wrap">
+        <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+          <h3>Request a Free Quote</h3>
+          <div class="form-group">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone" placeholder="(323) 555-1234" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" />
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="4" placeholder="Tell us about your project..." required></textarea>
+          </div>
+          <button type="submit" class="form-submit">Send</button>
+          <p class="form-note">Or email us directly at <a href="mailto:hello@thenohohandyman.com">hello@thenohohandyman.com</a></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials">
+    <div class="container">
+      <h2>What Clients Say About Us</h2>
+      <div class="testimonial-grid">
+        <blockquote class="testimonial">
+          <p>"David and his sons rebuilt our kitchen cabinets in a weekend. Clean, professional, and the price was exactly what he quoted. Highly recommend."</p>
+          <footer>— Sarah M., North Hollywood</footer>
+        </blockquote>
+        <blockquote class="testimonial">
+          <p>"I've used a lot of handymen over the years. These guys actually show up on time and clean up after themselves. Rare combo in LA."</p>
+          <footer>— James K., Sherman Oaks</footer>
+        </blockquote>
+        <blockquote class="testimonial">
+          <p>"Fixed a leaky pipe and installed new bathroom fixtures. Fair pricing, no upselling, and the work looks great. Will call again."</p>
+          <footer>— Maria L., Encino</footer>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-section">
+    <div class="container">
+      <h2>How Does It Work?</h2>
+      <div class="faq-list">
+        {faqs.map((item, i) => (
+          <details class="faq-item" name="faq">
+            <summary>
+              {item.q}
+              <span class="faq-icon" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-answer">
+              <p>{item.a}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTAStrip />
+  <Footer />
 </Layout>
+
+<style>
+  /* Hero */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    padding: 8rem 0 4rem;
+  }
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.7) 100%);
+  }
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+  }
+  .hero h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    color: var(--color-white);
+    margin-bottom: 1.5rem;
+    text-wrap: balance;
+  }
+  .trust-bullets {
+    list-style: none;
+    margin-bottom: 2rem;
+  }
+  .trust-bullets li {
+    font-size: clamp(1rem, 2vw, 1.125rem);
+    color: rgba(255,255,255,0.9);
+    padding-left: 1.5rem;
+    position: relative;
+    margin-bottom: 0.5rem;
+  }
+  .trust-bullets li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--color-primary);
+    font-weight: 700;
+  }
+  .hero-phone {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-heading);
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--color-white);
+    padding: 0.875rem 1.5rem;
+    background: var(--color-primary);
+    border-radius: var(--radius-sm);
+    transition: background 0.2s;
+  }
+  .hero-phone:hover {
+    background: var(--color-primary-dark);
+  }
+
+  /* Trust Band */
+  .trust-band {
+    background: var(--color-primary);
+    padding: var(--section-pad-sm) 0;
+    text-align: center;
+  }
+  .trust-band h2 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    color: var(--color-white);
+    margin-bottom: 2.5rem;
+  }
+  .trust-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+  }
+  .trust-item {
+    color: var(--color-white);
+  }
+  .trust-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    color: var(--color-white);
+  }
+  .trust-item h3 {
+    font-size: 1.125rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+  }
+  .trust-item p {
+    font-size: 0.9375rem;
+    opacity: 0.85;
+  }
+
+  /* Family */
+  .family-section {
+    padding: var(--section-pad) 0;
+  }
+  .family-inner {
+    display: grid;
+    gap: 3rem;
+    align-items: center;
+  }
+  .family-text h2 {
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    margin-bottom: 1rem;
+  }
+  .family-text p {
+    font-size: 1.0625rem;
+    color: var(--color-text-muted);
+    margin-bottom: 2rem;
+    line-height: 1.7;
+  }
+  .family-stats {
+    display: flex;
+    gap: 2rem;
+  }
+  .stat {
+    text-align: center;
+  }
+  .stat strong {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--color-primary);
+    line-height: 1;
+  }
+  .stat span {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-muted);
+  }
+  .family-image img {
+    border-radius: var(--radius);
+    width: 100%;
+    object-fit: cover;
+  }
+
+  /* Services Preview */
+  .services-preview {
+    background: var(--color-surface);
+    padding: var(--section-pad) 0;
+  }
+  .section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  .section-header h2 {
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    margin-bottom: 0.5rem;
+  }
+  .section-header p {
+    font-size: 1.0625rem;
+    color: var(--color-text-muted);
+  }
+  .service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+  .service-card {
+    display: block;
+    position: relative;
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+  }
+  .service-card-image {
+    aspect-ratio: 4/3;
+    overflow: hidden;
+  }
+  .service-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+  }
+  .service-card:hover .service-card-image img {
+    transform: scale(1.05);
+  }
+  .service-card-caption {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    right: 1rem;
+    background: rgba(248,250,252,0.95);
+    backdrop-filter: blur(8px);
+    padding: 0.875rem 1.25rem;
+    border-radius: var(--radius-sm);
+  }
+  .service-card-caption h3 {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--color-text);
+  }
+  .achievement-strip {
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    flex-wrap: wrap;
+  }
+  .achievement {
+    text-align: center;
+  }
+  .achievement strong {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--color-primary);
+  }
+  .achievement span {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+  }
+
+  /* Neighborhoods */
+  .neighborhoods {
+    background: var(--color-primary);
+    padding: var(--section-pad-sm) 0;
+    text-align: center;
+  }
+  .neighborhoods h2 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    color: var(--color-white);
+    margin-bottom: 0.75rem;
+  }
+  .neighborhoods > .container > p {
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .neighborhood-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+  }
+  .neighborhood-tag {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: rgba(255,255,255,0.15);
+    color: var(--color-white);
+    font-size: 0.875rem;
+    font-weight: 500;
+    border-radius: 9999px;
+    backdrop-filter: blur(4px);
+  }
+
+  /* Process */
+  .process-section {
+    padding: var(--section-pad) 0;
+    text-align: center;
+  }
+  .process-section h2 {
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    margin-bottom: 3rem;
+  }
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+  }
+  .process-card {
+    padding: 2rem;
+    background: var(--color-surface);
+    border-radius: var(--radius);
+  }
+  .process-step {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    color: var(--color-white);
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+  }
+  .process-card h3 {
+    font-size: 1.125rem;
+    margin-bottom: 0.5rem;
+  }
+  .process-card p {
+    font-size: 0.9375rem;
+    color: var(--color-text-muted);
+  }
+
+  /* Contact */
+  .contact-section {
+    padding: var(--section-pad) 0;
+    background: var(--color-surface);
+  }
+  .contact-inner {
+    display: grid;
+    gap: 3rem;
+    align-items: start;
+  }
+  .contact-info h2 {
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    margin-bottom: 0.5rem;
+  }
+  .contact-subtitle {
+    font-size: 1.0625rem;
+    color: var(--color-text-muted);
+    margin-bottom: 1.5rem;
+  }
+  .contact-phone {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--color-primary);
+    margin-bottom: 1.5rem;
+  }
+  .contact-actions {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  .contact-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.75rem 1.5rem;
+    font-family: var(--font-heading);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    border-radius: var(--radius-sm);
+    border: 2px solid var(--color-primary);
+    color: var(--color-primary);
+    transition: all 0.2s;
+  }
+  .contact-btn.primary {
+    background: var(--color-primary);
+    color: var(--color-white);
+  }
+  .contact-btn:hover {
+    background: var(--color-primary-dark);
+    border-color: var(--color-primary-dark);
+    color: var(--color-white);
+  }
+  .instagram-link a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9375rem;
+    color: var(--color-text-muted);
+    transition: color 0.2s;
+  }
+  .instagram-link a:hover {
+    color: var(--color-primary);
+  }
+
+  /* Contact Form */
+  .contact-form-wrap {
+    background: var(--color-white);
+    padding: 2rem;
+    border-radius: var(--radius);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  }
+  .contact-form h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+  .form-group {
+    margin-bottom: 1.25rem;
+  }
+  .form-group label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 0.375rem;
+    color: var(--color-text);
+  }
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    border: 1px solid #e2e8f0;
+    border-radius: var(--radius-sm);
+    background: var(--color-white);
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .form-group input:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+  }
+  .form-submit {
+    width: 100%;
+    padding: 0.875rem;
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-white);
+    background: var(--color-primary);
+    border-radius: var(--radius-sm);
+    transition: background 0.2s;
+  }
+  .form-submit:hover {
+    background: var(--color-primary-dark);
+  }
+  .form-note {
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
+    margin-top: 1rem;
+    text-align: center;
+  }
+  .form-note a {
+    color: var(--color-primary);
+    text-decoration: underline;
+  }
+
+  /* Testimonials */
+  .testimonials {
+    padding: var(--section-pad) 0;
+  }
+  .testimonials h2 {
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  .testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  .testimonial {
+    background: var(--color-surface);
+    padding: 2rem;
+    border-radius: var(--radius);
+    border-left: 4px solid var(--color-primary);
+  }
+  .testimonial p {
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+    font-style: italic;
+  }
+  .testimonial footer {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+  }
+
+  /* FAQ */
+  .faq-section {
+    padding: var(--section-pad) 0;
+    background: var(--color-surface);
+  }
+  .faq-section h2 {
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  .faq-list {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .faq-item {
+    background: var(--color-white);
+    border-radius: var(--radius-sm);
+    margin-bottom: 0.75rem;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
+  .faq-item summary {
+    list-style: none;
+    padding: 1.25rem 1.5rem;
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+  }
+  .faq-item summary::-webkit-details-marker {
+    display: none;
+  }
+  .faq-icon {
+    width: 20px;
+    height: 20px;
+    position: relative;
+    flex-shrink: 0;
+  }
+  .faq-icon::before,
+  .faq-icon::after {
+    content: '';
+    position: absolute;
+    background: var(--color-text);
+    transition: transform 0.3s;
+  }
+  .faq-icon::before {
+    top: 9px;
+    left: 0;
+    width: 20px;
+    height: 2px;
+  }
+  .faq-icon::after {
+    top: 0;
+    left: 9px;
+    width: 2px;
+    height: 20px;
+  }
+  .faq-item[open] .faq-icon::after {
+    transform: rotate(90deg);
+  }
+  .faq-answer {
+    padding: 0 1.5rem 1.25rem;
+  }
+  .faq-answer p {
+    font-size: 0.9375rem;
+    color: var(--color-text-muted);
+    line-height: 1.7;
+  }
+
+  /* Responsive */
+  @media (min-width: 768px) {
+    .family-inner {
+      grid-template-columns: 1fr 1fr;
+    }
+    .contact-inner {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>

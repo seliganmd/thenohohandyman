@@ -1,0 +1,70 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="404 — Page Not Found | TheNoHoHandyman">
+  <Header />
+
+  <section class="error-page" style="background-image: url('/images/hero.jpg');">
+    <div class="error-overlay"></div>
+    <div class="container error-content">
+      <h1>404</h1>
+      <p>The page you are looking for doesn't exist or has been moved.</p>
+      <a href="/" class="error-home">Go back to homepage</a>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  .error-page {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    padding: 8rem 0 4rem;
+  }
+  .error-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+  }
+  .error-content {
+    position: relative;
+    z-index: 1;
+    max-width: 600px;
+  }
+  .error-content h1 {
+    font-size: clamp(4rem, 10vw, 8rem);
+    font-weight: 800;
+    color: var(--color-white);
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+  .error-content p {
+    font-size: 1.125rem;
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 2rem;
+  }
+  .error-home {
+    display: inline-flex;
+    padding: 0.875rem 2rem;
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-white);
+    background: var(--color-primary);
+    border-radius: var(--radius-sm);
+    transition: background 0.2s;
+  }
+  .error-home:hover {
+    background: var(--color-primary-dark);
+  }
+</style>

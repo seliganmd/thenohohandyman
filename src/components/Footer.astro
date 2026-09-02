@@ -1,14 +1,169 @@
-{
-  "@context": "https://schema.org",
-  "@type": "HomeAndConstructionBusiness",
-  "name": "TheNoHoHandyman",
-  "telephone": "(323) 802-3454",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "22124 Ventura Blvd #217",
-    "addressLocality": "Woodland Hills",
-    "addressRegion": "CA",
-    "postalCode": "91364",
-    "addressCountry": "US"
+---
+const companyLinks = [
+  { label: 'Home', href: '/' },
+  { label: 'About Us', href: '/about-us' },
+  { label: 'Contact', href: '/#contact' },
+];
+
+const serviceLinks = [
+  { label: 'Interior Works', href: '/services/interior-works' },
+  { label: 'Exterior Works', href: '/services/exterior-works' },
+  { label: 'Carpentry', href: '/services/carpentry' },
+  { label: 'Plumbing', href: '/services/plumbing' },
+];
+---
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <a href="/" class="footer-logo">TheNoHoHandyman</a>
+      <p class="footer-tagline">Your go-to destination for all your home repair and improvement needs.</p>
+    </div>
+
+    <div class="footer-columns">
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          {companyLinks.map(link => (
+            <li><a href={link.href}>{link.label}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          {serviceLinks.map(link => (
+            <li><a href={link.href}>{link.label}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <div class="social-links">
+          <a href="https://www.instagram.com/thenohohandyman" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+          </a>
+          <a href="https://www.facebook.com/thenohohandyman" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container">
+      <p>&copy; {new Date().getFullYear()} TheNoHoHandyman. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--color-surface-alt);
+    padding: 4rem 0 0;
   }
-}
+
+  .footer-inner {
+    display: grid;
+    gap: 3rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  .footer-brand {
+    max-width: 320px;
+  }
+
+  .footer-logo {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--color-text);
+    letter-spacing: -0.03em;
+    display: inline-block;
+    margin-bottom: 0.75rem;
+  }
+
+  .footer-tagline {
+    font-size: 0.9375rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+  }
+
+  .footer-columns {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .footer-col h4 {
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-muted);
+    margin-bottom: 1rem;
+  }
+
+  .footer-col ul {
+    list-style: none;
+  }
+
+  .footer-col li + li {
+    margin-top: 0.5rem;
+  }
+
+  .footer-col a {
+    font-size: 0.9375rem;
+    color: var(--color-text);
+    transition: color 0.2s;
+  }
+
+  .footer-col a:hover {
+    color: var(--color-primary);
+  }
+
+  .social-links {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-sm);
+    background: var(--color-white);
+    color: var(--color-text);
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .social-links a:hover {
+    background: var(--color-primary);
+    color: var(--color-white);
+  }
+
+  .footer-bottom {
+    padding: 1.5rem 0;
+    text-align: center;
+  }
+
+  .footer-bottom p {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+  }
+
+  @media (min-width: 768px) {
+    .footer-inner {
+      grid-template-columns: 1fr 2fr;
+    }
+    .footer-columns {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>

@@ -1,0 +1,359 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import CTAStrip from '../../components/CTAStrip.astro';
+import services from '../../data/services.json';
+
+export async function getStaticPaths() {
+  return services.map(s => ({
+    params: { slug: s.slug },
+    props: { service: s },
+  }));
+}
+
+const { service } = Astro.props;
+
+const pricingData = {
+  opening: 'Fair, upfront pricing. No surprises.',
+  copy: 'We keep overhead low so you pay for craftsmanship, not corporate markup. Every job starts with a free estimate: no pressure, no hidden fees. Same-day service often available.',
+  rates: [
+    { name: 'Hourly / Small repairs, multiple tasks', price: '$75–$85/hour' },
+    { name: 'Half-Day (4 hours) / Medium projects, furniture assembly', price: '$240–$300' },
+    { name: 'Flat Rate / Cabinets, doors, closets, painting', price: 'Quote after free estimate' },
+    { name: 'Night Shift / After-Hours / Urgent repairs, busy schedules', price: '50–100% premium' },
+  ],
+  note: 'Materials billed separately at cost + 10%. $100 minimum for all jobs.',
+  commonRanges: [
+    { service: 'Cabinet installation', range: '$200–$350' },
+    { service: 'Closet system install', range: '$250–$450' },
+    { service: 'Door installation or repair', range: '$150–$300' },
+    { service: 'Interior painting per room', range: '$250–$600' },
+    { service: 'Furniture assembly', range: '$90–$150' },
+    { service: 'TV / art mounting', range: '$100–$220' },
+    { service: 'Window repair', range: '$85–$300' },
+    { service: 'Trim / molding install', range: '$200–$350' },
+  ],
+  included: ['Free estimate', 'On-time arrival', 'Clean worksite', '30-day workmanship guarantee'],
+  extra: ['Materials', 'Parking fees if applicable'],
+};
+---
+
+{service.isPricing ? (
+  <Layout
+    title="Pricing | TheNoHoHandyman"
+    description="Handyman pricing in North Hollywood, LA. $75–$85/hour. Cabinets, doors, painting & repairs. Free estimates, no hidden fees."
+    canonical={`services/${service.slug}`}
+  >
+    <Header />
+
+    <section class="page-hero" style="background-image: url('/images/services-hero.jpg');">
+      <div class="page-hero-overlay"></div>
+      <div class="container page-hero-content">
+        <h1>Pricing</h1>
+      </div>
+    </section>
+
+    <section class="pricing-section">
+      <div class="container">
+        <div class="pricing-intro">
+          <h2>{pricingData.opening}</h2>
+          <p>{pricingData.copy}</p>
+        </div>
+
+        <div class="pricing-table-wrap">
+          <table class="pricing-table">
+            <thead>
+              <tr>
+                <th>Service Type</th>
+                <th>Rate</th>
+              </tr>
+            </thead>
+            <tbody>
+              {pricingData.rates.map(r => (
+                <tr>
+                  <td>
+                    <strong>{r.name.split(' / ')[0]}</strong>
+                    <span class="rate-desc">{r.name.split(' / ').slice(1).join(' / ')}</span>
+                  </td>
+                  <td class="rate-price">{r.price}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <p class="pricing-note">{pricingData.note}</p>
+        </div>
+
+        <div class="common-ranges">
+          <h3>Common Price Ranges</h3>
+          <table class="pricing-table">
+            <thead>
+              <tr>
+                <th>Service</th>
+                <th>Typical Range</th>
+              </tr>
+            </thead>
+            <tbody>
+              {pricingData.commonRanges.map(r => (
+                <tr>
+                  <td>{r.service}</td>
+                  <td class="rate-price">{r.range}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <div class="pricing-extras">
+          <div class="extra-box included">
+            <h4>Included</h4>
+            <ul>
+              {pricingData.included.map(item => <li>{item}</li>)}
+            </ul>
+          </div>
+          <div class="extra-box">
+            <h4>Extra</h4>
+            <ul>
+              {pricingData.extra.map(item => <li>{item}</li>)}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <CTAStrip />
+    <Footer />
+  </Layout>
+) : (
+  <Layout
+    title={`${service.title} | TheNoHoHandyman`}
+    description={`${service.summary} Serving North Hollywood, Encino, Sherman Oaks and Burbank. Free estimates.`}
+    canonical={`services/${service.slug}`}
+  >
+    <Header />
+
+    <section class="page-hero" style={`background-image: url('${service.image}');`}>
+      <div class="page-hero-overlay"></div>
+      <div class="container page-hero-content">
+        <h1>{service.title}</h1>
+        <p>{service.summary}</p>
+      </div>
+    </section>
+
+    <section class="detail-section">
+      <div class="container">
+        <h2>What We Offer</h2>
+        <div class="detail-grid">
+          {service.detailSections.map(section => (
+            <div class="detail-card">
+              <div class="detail-bullet"></div>
+              <h3>{section}</h3>
+            </div>
+          ))}
+        </div>
+        <a href="/#contact" class="detail-cta">Request a Free Quote</a>
+      </div>
+    </section>
+
+    <CTAStrip />
+    <Footer />
+  </Layout>
+)}
+
+<style>
+  .page-hero {
+    position: relative;
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    background-position: center;
+    padding: 8rem 0 4rem;
+  }
+  .page-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+  }
+  .page-hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    max-width: 700px;
+  }
+  .page-hero h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 800;
+    color: var(--color-white);
+    margin-bottom: 0.75rem;
+  }
+  .page-hero-content p {
+    font-size: 1.125rem;
+    color: rgba(255,255,255,0.85);
+  }
+
+  /* Detail page */
+  .detail-section {
+    padding: var(--section-pad) 0;
+    text-align: center;
+  }
+  .detail-section h2 {
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    margin-bottom: 3rem;
+  }
+  .detail-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+  .detail-card {
+    background: var(--color-surface);
+    padding: 2rem;
+    border-radius: var(--radius);
+    text-align: left;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .detail-bullet {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    flex-shrink: 0;
+    margin-top: 0.35rem;
+  }
+  .detail-card h3 {
+    font-size: 1.0625rem;
+    font-weight: 600;
+  }
+  .detail-cta {
+    display: inline-flex;
+    padding: 0.875rem 2rem;
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-white);
+    background: var(--color-primary);
+    border-radius: var(--radius-sm);
+    transition: background 0.2s;
+  }
+  .detail-cta:hover {
+    background: var(--color-primary-dark);
+  }
+
+  /* Pricing page */
+  .pricing-section {
+    padding: var(--section-pad) 0;
+  }
+  .pricing-intro {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  .pricing-intro h2 {
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    margin-bottom: 1rem;
+  }
+  .pricing-intro p {
+    font-size: 1.0625rem;
+    color: var(--color-text-muted);
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+  .pricing-table-wrap {
+    margin-bottom: 3rem;
+  }
+  .pricing-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9375rem;
+  }
+  .pricing-table th {
+    text-align: left;
+    padding: 1rem 1.25rem;
+    background: var(--color-surface);
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: var(--color-text-muted);
+  }
+  .pricing-table td {
+    padding: 1.25rem;
+    border-bottom: 1px solid #e2e8f0;
+    vertical-align: top;
+  }
+  .pricing-table td strong {
+    display: block;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 0.25rem;
+  }
+  .rate-desc {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+  }
+  .rate-price {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: var(--color-primary);
+    font-size: 1.0625rem;
+    white-space: nowrap;
+  }
+  .pricing-note {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    margin-top: 1rem;
+    font-style: italic;
+  }
+  .common-ranges {
+    margin-bottom: 3rem;
+  }
+  .common-ranges h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+  .pricing-extras {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+  }
+  .extra-box {
+    background: var(--color-surface);
+    padding: 1.5rem;
+    border-radius: var(--radius);
+  }
+  .extra-box.included {
+    border-left: 4px solid var(--color-primary);
+  }
+  .extra-box h4 {
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-muted);
+    margin-bottom: 1rem;
+  }
+  .extra-box ul {
+    list-style: none;
+  }
+  .extra-box li {
+    font-size: 0.9375rem;
+    padding: 0.375rem 0;
+    color: var(--color-text);
+  }
+  .extra-box li::before {
+    content: '✓ ';
+    color: var(--color-primary);
+    font-weight: 700;
+  }
+  .extra-box:not(.included) li::before {
+    content: '+ ';
+    color: var(--color-text-muted);
+    font-weight: 400;
+  }
+</style>

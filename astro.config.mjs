@@ -1,6 +1,8 @@
 import { defineConfig } from 'astro/config';
+import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://thenohohandyman.com',
-  output: 'static', // Explicitly set static output
+  output: 'static',
+  integrations: [sitemap()],
 });

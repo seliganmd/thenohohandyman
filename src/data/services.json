@@ -1,0 +1,81 @@
+[
+  {
+    "title": "Exterior Works",
+    "slug": "exterior-works",
+    "summary": "Upgrade your home by entrusting our team with great installations.",
+    "image": "/images/service-exterior.jpg",
+    "detailSections": [
+      "Landscaping and Gardening",
+      "Exterior Painting and Restoration",
+      "Deck and Patio Construction",
+      "Roofing and Siding Repairs"
+    ]
+  },
+  {
+    "title": "Interior Works",
+    "slug": "interior-works",
+    "summary": "Elevate your home's aesthetic through our remodeling services.",
+    "image": "/images/service-interior.jpg",
+    "detailSections": [
+      "Painting and Wall Treatments",
+      "Flooring Installation and Refinishing",
+      "Electrical and Lighting Solutions",
+      "Custom Cabinetry and Shelving"
+    ]
+  },
+  {
+    "title": "Carpentry",
+    "slug": "carpentry",
+    "summary": "Our carpenters are here to turn your ideas into beautiful realities.",
+    "image": "/images/service-carpentry.jpg",
+    "detailSections": [
+      "Custom Furniture Design and Construction",
+      "Cabinet Installation and Refacing",
+      "Wooden Flooring and Stairs",
+      "Structural Enhancements"
+    ]
+  },
+  {
+    "title": "Plumbing",
+    "slug": "plumbing",
+    "summary": "Our plumbers are equipped to handle repairs and upgrades.",
+    "image": "/images/service-plumbing.jpg",
+    "detailSections": [
+      "Leak Repairs and Detection",
+      "Pipe Installations and Replacements",
+      "Fixture Installations and Upgrades",
+      "Water Heater Services"
+    ]
+  },
+  {
+    "title": "Maintenance",
+    "slug": "maintenance",
+    "summary": "Our maintenance services include routine and preventive checks.",
+    "image": "/images/service-maintenance.jpg",
+    "detailSections": [
+      "Seasonal Inspections",
+      "Gutter Cleaning and Maintenance",
+      "HVAC System Checks",
+      "Roof and Chimney Inspections"
+    ]
+  },
+  {
+    "title": "Quick Fixes",
+    "slug": "quick-fixes",
+    "summary": "Our experienced handymen provide reliable repair solutions.",
+    "image": "/images/service-quickfixes.jpg",
+    "detailSections": [
+      "Door and Window Repairs",
+      "Light Fixture Replacements",
+      "Faucet and Fixture Tightening",
+      "Minor Drywall Patching"
+    ]
+  },
+  {
+    "title": "Pricing",
+    "slug": "pricing",
+    "summary": "Handyman pricing in North Hollywood, LA. $75–$85/hour. Cabinets, doors, painting & repairs.",
+    "image": "/images/service-pricing.jpg",
+    "isPricing": true
+  }
+]

@@ -1,0 +1,226 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import CTAStrip from '../components/CTAStrip.astro';
+---
+
+<Layout
+  title="About Us | TheNoHoHandyman"
+  description="Three generations of craftsmanship. Father & sons handyman team serving North Hollywood, Encino, Sherman Oaks and Burbank with skilled repairs and fair pricing."
+  canonical="about-us"
+>
+  <Header />
+
+  <section class="page-hero" style="background-image: url('/images/about-hero.jpg');">
+    <div class="page-hero-overlay"></div>
+    <div class="container page-hero-content">
+      <h1>About Us</h1>
+    </div>
+  </section>
+
+  <section class="about-section">
+    <div class="container about-inner">
+      <div class="about-text">
+        <h2>Three Generations of Craft</h2>
+        <p>Our father started as a carpenter before we were born. We grew up in his workshop, learning that a straight line and a square corner matter more than speed. Today, we bring that third-generation patience to every job, whether it's a single cabinet or a full closet rebuild.</p>
+        <div class="signature">
+          <img src="/images/signature.png" alt="Handwritten signature of the team" loading="lazy" />
+        </div>
+      </div>
+      <div class="about-images">
+        <img src="/images/about-1.jpg" alt="Bathroom renovation detail" loading="lazy" class="about-img-tall" />
+        <img src="/images/about-2.jpg" alt="Finished bathroom work" loading="lazy" class="about-img-tall" />
+      </div>
+    </div>
+  </section>
+
+  <section class="values-section">
+    <div class="container">
+      <h2>We answer to customers, not shareholders.</h2>
+      <p>In a family business, there's no corporate office to hide behind and no marketing team to spin mistakes. Our name is on every job, literally. That means we show up when we say we will, clean up before we leave and don't consider it done until the customer is satisfied.</p>
+    </div>
+  </section>
+
+  <section class="stats-section">
+    <div class="container stats-grid">
+      <div class="stat-card">
+        <strong>7</strong>
+        <span>Days a Week</span>
+      </div>
+      <div class="stat-card">
+        <strong>5h</strong>
+        <span>Response Time</span>
+      </div>
+      <div class="stat-card">
+        <strong>10AM</strong>
+        <span>to 10PM Daily</span>
+      </div>
+      <div class="stat-card">
+        <strong>25+</strong>
+        <span>Years Experience</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="team-section">
+    <div class="container team-inner">
+      <div class="team-text">
+        <h2>Meet Our Team of Experts</h2>
+        <p>We think quality should be accessible. That's why we keep overhead low and pricing transparent. Every estimate is free, every job is guaranteed, and every customer is treated like family.</p>
+      </div>
+      <div class="team-image">
+        <img src="/images/team.png" alt="TheNoHoHandyman father and sons team" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <CTAStrip />
+  <Footer />
+</Layout>
+
+<style>
+  .page-hero {
+    position: relative;
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    background-position: center;
+    padding: 8rem 0 4rem;
+  }
+  .page-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+  }
+  .page-hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+  }
+  .page-hero h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 800;
+    color: var(--color-white);
+  }
+
+  .about-section {
+    padding: var(--section-pad) 0;
+  }
+  .about-inner {
+    display: grid;
+    gap: 3rem;
+    align-items: center;
+  }
+  .about-text h2 {
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    margin-bottom: 1rem;
+  }
+  .about-text p {
+    font-size: 1.0625rem;
+    color: var(--color-text-muted);
+    line-height: 1.7;
+    margin-bottom: 2rem;
+  }
+  .signature img {
+    max-width: 180px;
+    opacity: 0.7;
+  }
+  .about-images {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .about-img-tall {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: var(--radius);
+  }
+
+  .values-section {
+    background: var(--color-surface);
+    padding: var(--section-pad) 0;
+    text-align: center;
+  }
+  .values-section h2 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    margin-bottom: 1rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .values-section p {
+    font-size: 1.0625rem;
+    color: var(--color-text-muted);
+    line-height: 1.7;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .stats-section {
+    padding: var(--section-pad-sm) 0;
+  }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  .stat-card {
+    text-align: center;
+    padding: 2rem;
+    background: var(--color-white);
+    border-radius: var(--radius);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  }
+  .stat-card strong {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--color-primary);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+  .stat-card span {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+  }
+
+  .team-section {
+    padding: var(--section-pad) 0;
+  }
+  .team-inner {
+    display: grid;
+    gap: 3rem;
+    align-items: center;
+  }
+  .team-text h2 {
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    margin-bottom: 1rem;
+  }
+  .team-text p {
+    font-size: 1.0625rem;
+    color: var(--color-text-muted);
+    line-height: 1.7;
+  }
+  .team-image img {
+    width: 100%;
+    border-radius: var(--radius);
+    object-fit: cover;
+  }
+
+  @media (min-width: 768px) {
+    .about-inner {
+      grid-template-columns: 1fr 1fr;
+    }
+    .stats-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .team-inner {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>

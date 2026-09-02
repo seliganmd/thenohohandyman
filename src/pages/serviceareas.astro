@@ -1,0 +1,148 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import CTAStrip from '../components/CTAStrip.astro';
+
+const areas = {
+  'West Valley': ['Mission Hills', 'Sylmar', 'Granada Hills', 'Porter Ranch', 'Northridge', 'Chatsworth'],
+  'Central Valley': ['North Hills', 'Lake Balboa', 'Van Nuys', 'Sherman Oaks', 'Studio City', 'Valley Village'],
+  'East Valley': ['Universal City', 'North Hollywood', 'Sun Valley', 'Pacoima', 'Arleta'],
+  'Foothills': ['Sunland', 'Tujunga', 'Shadow Hills'],
+  'Encino & Surrounding Areas': ['Encino', 'Tarzana', 'Woodland Hills', 'Calabasas', 'Reseda', 'Lake Balboa'],
+};
+---
+
+<Layout
+  title="Service Areas | TheNoHoHandyman"
+  description="Handyman services in North Hollywood, Encino, Sherman Oaks, Burbank, Studio City, Van Nuys, Woodland Hills, Calabasas, and surrounding LA communities."
+  canonical="serviceareas"
+>
+  <Header />
+
+  <section class="page-hero" style="background-image: url('/images/services-hero.jpg');">
+    <div class="page-hero-overlay"></div>
+    <div class="container page-hero-content">
+      <h1>Service Areas</h1>
+    </div>
+  </section>
+
+  <section class="areas-intro">
+    <div class="container">
+      <h2>Handyman Services in North Hollywood & Nearby Communities</h2>
+      <p>Based in North Hollywood, our father & son handyman team proudly serves homeowners throughout North Hollywood and surrounding neighborhoods. We provide reliable home repairs, installations, and small-to-mid-size improvement projects with direct communication, honest pricing, and careful workmanship.</p>
+    </div>
+  </section>
+
+  <section class="areas-section">
+    <div class="container">
+      <div class="areas-grid">
+        {Object.entries(areas).map(([region, neighborhoods]) => (
+          <div class="area-card">
+            <h3>{region}</h3>
+            <ul>
+              {neighborhoods.map(n => <li>{n}</li>)}
+            </ul>
+          </div>
+        ))}
+      </div>
+      <div class="areas-closing">
+        <p>Don't see your neighborhood? <a href="tel:3238023454">Call us</a> — we likely still cover it.</p>
+      </div>
+    </div>
+  </section>
+
+  <CTAStrip />
+  <Footer />
+</Layout>
+
+<style>
+  .page-hero {
+    position: relative;
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    background-position: center;
+    padding: 8rem 0 4rem;
+  }
+  .page-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+  }
+  .page-hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+  }
+  .page-hero h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 800;
+    color: var(--color-white);
+  }
+
+  .areas-intro {
+    padding: var(--section-pad) 0 2rem;
+    text-align: center;
+  }
+  .areas-intro h2 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    margin-bottom: 1rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .areas-intro p {
+    font-size: 1.0625rem;
+    color: var(--color-text-muted);
+    line-height: 1.7;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .areas-section {
+    padding: 2rem 0 var(--section-pad);
+  }
+  .areas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+  }
+  .area-card {
+    background: var(--color-surface);
+    padding: 1.5rem;
+    border-radius: var(--radius);
+  }
+  .area-card h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--color-primary);
+  }
+  .area-card ul {
+    list-style: none;
+  }
+  .area-card li {
+    font-size: 0.9375rem;
+    padding: 0.375rem 0;
+    color: var(--color-text-muted);
+  }
+  .areas-closing {
+    text-align: center;
+    margin-top: 3rem;
+    padding: 1.5rem;
+    background: var(--color-surface);
+    border-radius: var(--radius);
+  }
+  .areas-closing p {
+    font-size: 1.0625rem;
+  }
+  .areas-closing a {
+    color: var(--color-primary);
+    font-weight: 600;
+    text-decoration: underline;
+  }
+</style>
