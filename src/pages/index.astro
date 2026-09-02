@@ -1,11 +1,42 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="TheNoHoHandyman | Handyman Services in Los Angeles">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HomeAndConstructionBusiness",
+      "name": "TheNoHoHandyman",
+      "telephone": "(323) 802-3454",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "22124 Ventura Blvd #217",
+        "addressLocality": "Woodland Hills",
+        "addressRegion": "CA",
+        "postalCode": "91364",
+        "addressCountry": "US"
+      }
+    }
+  </script>
+
+  <header style="padding: 2rem 0; border-bottom: 1px solid #e5e7eb;">
+    <h1 style="font-size: 2rem; font-weight: bold;">TheNoHoHandyman</h1>
+    <p>Father & Sons Handyman Service for Los Angeles Homeowners</p>
+  </header>
+
+  <main style="padding: 2rem 0;">
+    <h2 style="font-size: 1.5rem; font-weight: 600;">Quality Handyman Repairs</h2>
+    <p>Direct service, fair pricing, no call centers or middleman fees.</p>
+    
+    <div style="background: #f4f4f5; padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0;">
+      <h3 style="font-size: 1.25rem; font-weight: 600;">Contact & Location</h3>
+      <p><strong>Phone:</strong> <a href="tel:3238023454">(323) 802-3454</a></p>
+      <p><strong>Address:</strong> 22124 Ventura Blvd #217, Woodland Hills, CA 91364</p>
+    </div>
+  </main>
+
+  <footer style="margin-top: 2rem; border-top: 1px solid #e5e7eb; padding-top: 1rem; color: #6b7280;">
+    <p>&copy; {new Date().getFullYear()} TheNoHoHandyman. All rights reserved.</p>
+  </footer>
 </Layout>
